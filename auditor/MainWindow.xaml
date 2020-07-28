@@ -1,0 +1,55 @@
+﻿<Window x:Class="auditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:auditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1000">
+    <Window.Resources>
+        <Style x:Key="ControlsMargin">
+            <Setter Property="Control.Margin" Value="10, 5, 10, 10" />
+            <Setter Property="ItemsControl.VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Территориальный орган:</TextBlock>
+                <ComboBox x:Name="Departments" Height="25" Width="370">
+                    <TextBlock>УМВД России по Еврейской автономной области</TextBlock>
+                    <TextBlock>МОМВД России "Биробиджанский"</TextBlock>
+                    <TextBlock>МОМВД России "Ленинский"</TextBlock>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Административное здание:</TextBlock>
+                <ComboBox x:Name="Buildings" Height="25" Width="270">
+                    <TextBlock>г. Биробиджан, ул. Ленина, 4</TextBlock>
+                    <TextBlock>г. Биробиджан, ул. Пионерская, 61</TextBlock>
+                    <TextBlock>г. Биробиджан, пер. МТС, 20а</TextBlock>
+                </ComboBox>
+            
+            <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Подразделение:</TextBlock>
+            <ComboBox x:Name="Divisions" Height="25" Width="170">
+                <TextBlock>ОДиР</TextBlock>
+                <TextBlock>ЦИТСиЗИ</TextBlock>
+                <TextBlock>ОЭБиПК</TextBlock>
+            </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Тип используемой техники:</TextBlock>
+                <ComboBox x:Name="TechTypes" Height="25" Width="200">
+                    <TextBlock>ПЭВМ (системный блок, монитор, клавиатура, мышь)</TextBlock>
+                    <TextBlock>Принтер</TextBlock>
+                    <TextBlock>МФУ</TextBlock>
+                    <TextBlock>Сканер</TextBlock>
+                </ComboBox>
+                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Инвентарный номер:</TextBlock>
+                <TextBox Name="inventoryNumber" Style="{StaticResource ControlsMargin}" Height="25" Width="150"></TextBox>
+                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Заводской номер:</TextBlock>
+                <TextBox Name="serialNumber" Style="{StaticResource ControlsMargin}" Height="25" Width="150"></TextBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
