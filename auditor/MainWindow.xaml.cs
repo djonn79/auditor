@@ -23,6 +23,12 @@ namespace auditor
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void OnClick(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(new SystemParametres<Win32_DiskDrive>().GetInfo().ToList().ToString());
         }
     }
 }

@@ -50,7 +50,7 @@
                 <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Заводской номер:</TextBlock>
                 <TextBox Name="serialNumber" Style="{StaticResource ControlsMargin}" Height="25" Width="150"></TextBox>
             </StackPanel>
-            <Button Height ="25" Width="300" HorizontalAlignment="Left">Распечатать тех.паспорт</Button>
+            <Button Height ="25" Width="300" HorizontalAlignment="Left" Click="OnClick">Распечатать тех.паспорт</Button>
         </StackPanel>
         
     </Grid>
