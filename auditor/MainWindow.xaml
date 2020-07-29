@@ -7,50 +7,51 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1000">
     <Window.Resources>
-        <Style x:Key="ControlsMargin">
-            <Setter Property="Control.Margin" Value="10, 5, 10, 10" />
-            <Setter Property="ItemsControl.VerticalAlignment" Value="Center" />
+        <Style TargetType="TextBlock">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="10, 10" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Территориальный орган:</TextBlock>
+                <TextBlock>Территориальный орган:</TextBlock>
                 <ComboBox x:Name="Departments" Height="25" Width="370">
-                    <TextBlock>УМВД России по Еврейской автономной области</TextBlock>
-                    <TextBlock>МОМВД России "Биробиджанский"</TextBlock>
-                    <TextBlock>МОМВД России "Ленинский"</TextBlock>
+                    <ComboBoxItem>УМВД России по Еврейской автономной области</ComboBoxItem>
+                    <ComboBoxItem>МОМВД России "Биробиджанский"</ComboBoxItem>
+                    <ComboBoxItem>МОМВД России "Ленинский"</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Административное здание:</TextBlock>
+                <TextBlock>Административное здание:</TextBlock>
                 <ComboBox x:Name="Buildings" Height="25" Width="270">
-                    <TextBlock>г. Биробиджан, ул. Ленина, 4</TextBlock>
-                    <TextBlock>г. Биробиджан, ул. Пионерская, 61</TextBlock>
-                    <TextBlock>г. Биробиджан, пер. МТС, 20а</TextBlock>
+                    <ComboBoxItem>г. Биробиджан, ул. Ленина, 4</ComboBoxItem>
+                    <ComboBoxItem>г. Биробиджан, ул. Пионерская, 61</ComboBoxItem>
+                    <ComboBoxItem>г. Биробиджан, пер. МТС, 20а</ComboBoxItem>
                 </ComboBox>
             
-            <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Подразделение:</TextBlock>
+            <TextBlock>Подразделение:</TextBlock>
             <ComboBox x:Name="Divisions" Height="25" Width="170">
-                <TextBlock>ОДиР</TextBlock>
-                <TextBlock>ЦИТСиЗИ</TextBlock>
-                <TextBlock>ОЭБиПК</TextBlock>
+                    <ComboBoxItem>ОДиР</ComboBoxItem>
+                    <ComboBoxItem>ЦИТСиЗИ</ComboBoxItem>
+                    <ComboBoxItem>ОЭБиПК</ComboBoxItem>
             </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Тип используемой техники:</TextBlock>
+                <TextBlock>Тип используемой техники:</TextBlock>
                 <ComboBox x:Name="TechTypes" Height="25" Width="200">
-                    <TextBlock>ПЭВМ (системный блок, монитор, клавиатура, мышь)</TextBlock>
-                    <TextBlock>Принтер</TextBlock>
-                    <TextBlock>МФУ</TextBlock>
-                    <TextBlock>Сканер</TextBlock>
+                    <ComboBoxItem>ПЭВМ (системный блок, монитор, клавиатура, мышь)</ComboBoxItem>
+                    <ComboBoxItem>Принтер</ComboBoxItem>
+                    <ComboBoxItem>МФУ</ComboBoxItem>
+                    <ComboBoxItem>Сканер</ComboBoxItem>
                 </ComboBox>
-                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Инвентарный номер:</TextBlock>
-                <TextBox Name="inventoryNumber" Style="{StaticResource ControlsMargin}" Height="25" Width="150"></TextBox>
-                <TextBlock Style="{StaticResource ControlsMargin}" Height="25">Заводской номер:</TextBlock>
-                <TextBox Name="serialNumber" Style="{StaticResource ControlsMargin}" Height="25" Width="150"></TextBox>
+                <TextBlock>Инвентарный номер:</TextBlock>
+                <TextBox Name="inventoryNumber" Height="25" Width="150"></TextBox>
+                <TextBlock>Заводской номер:</TextBlock>
+                <TextBox Name="serialNumber" Height="25" Width="150"></TextBox>
             </StackPanel>
-            <Button Height ="25" Width="300" HorizontalAlignment="Left" Click="OnClick">Распечатать тех.паспорт</Button>
+            <Button Height ="25" Width="300" Margin="10" HorizontalAlignment="Left" Click="OnClick">Распечатать тех.паспорт</Button>
         </StackPanel>
         
     </Grid>

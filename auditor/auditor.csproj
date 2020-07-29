@@ -58,6 +58,7 @@
     <Compile Include="SystemParametres.cs" />
     <Compile Include="Win32_Base.cs" />
     <Compile Include="Win32_DiskDrive.cs" />
+    <Compile Include="Win32_ProgramGroupItem.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

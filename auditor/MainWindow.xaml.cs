@@ -28,7 +28,17 @@ namespace auditor
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(new SystemParametres<Win32_DiskDrive>().GetInfo().ToList().ToString());
+            /*
+            var mo = new SystemParametres<Win32_DiskDrive>().GetInfo();
+            foreach (var m in mo)
+            {
+                MessageBox.Show(((Win32_DiskDrive)m).SerialNumber);
+            } */
+            var mo1 = new SystemParametres<Win32_ProgramGroupItem>().GetInfo();
+            foreach (var m in mo1)
+            {
+                MessageBox.Show(((Win32_ProgramGroupItem)m).Name);
+            }
         }
     }
 }
