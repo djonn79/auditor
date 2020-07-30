@@ -47,7 +47,7 @@
                     <ComboBoxItem>Сканер</ComboBoxItem>
                 </ComboBox>
                 <TextBlock>Инвентарный номер:</TextBlock>
-                <TextBox Name="inventoryNumber" Height="25" Width="150"></TextBox>
+                <TextBox Name="inventoryNumber" Height="25" Width="150" VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Заводской номер:</TextBlock>
                 <TextBox Name="serialNumber" Height="25" Width="150"></TextBox>
             </StackPanel>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace auditor
 {
@@ -28,17 +30,35 @@ namespace auditor
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
+            
             /*
             var mo = new SystemParametres<Win32_DiskDrive>().GetInfo();
             foreach (var m in mo)
             {
                 MessageBox.Show(((Win32_DiskDrive)m).SerialNumber);
-            } */
-            var mo1 = new SystemParametres<Win32_ProgramGroupItem>().GetInfo();
+            } 
+            var mo1 = new SystemParametres<Win32_Product>().GetInfo();
             foreach (var m in mo1)
             {
-                MessageBox.Show(((Win32_ProgramGroupItem)m).Name);
+                var obj = (Win32_Product)m;
+                if (obj.Name != null)
+                {
+                    MessageBox.Show(obj.Name + " => " + obj.Version);
+                }
             }
+            var mo1 = new SystemParametres<Win32_Product>().GetInfo();
+            foreach (var m in mo1)
+            {
+                var obj = (Win32_Product)m;
+                if (obj.Name != null)
+                {
+                    MessageBox.Show(obj.Name + " => " + obj.Caption);
+                }
+            }*/
         }
+
+        
+
+        
     }
 }
