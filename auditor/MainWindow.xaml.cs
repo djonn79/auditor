@@ -42,9 +42,10 @@ namespace auditor
             object filename = @"d:temp2.docx";
             var document = winword.Documents.Open(filename);
             
-            document.SaveAs(ref filename);
+            
             var newTable = document.Tables[1];
             newTable.Cell(1, 2).Range.Text = "sadfdsf";
+            document.SaveAs(ref filename);
             winword.Documents.Open(@"d:temp2.docx");
 
             /*
