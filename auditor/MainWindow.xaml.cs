@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Core;
 
 
 namespace auditor
@@ -30,7 +31,22 @@ namespace auditor
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
+            var winword = new Microsoft.Office.Interop.Word.Application();
+
+            //object missing = System.Reflection.Missing.Value;
+            //var document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+            //object start = 0;
+            //object end = 0;
+            //var tableLocation = document.Range(ref start, ref end);
+            //document.Tables.Add(tableLocation, 3, 4);
+            object filename = @"d:temp2.docx";
+            var document = winword.Documents.Open(filename);
             
+            document.SaveAs(ref filename);
+            var newTable = document.Tables[1];
+            newTable.Cell(1, 2).Range.Text = "sadfdsf";
+            winword.Documents.Open(@"d:temp2.docx");
+
             /*
             var mo = new SystemParametres<Win32_DiskDrive>().GetInfo();
             foreach (var m in mo)
