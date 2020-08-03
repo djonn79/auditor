@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Word;
 
 
 namespace auditor
@@ -21,7 +22,7 @@ namespace auditor
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         public MainWindow()
         {
@@ -33,20 +34,40 @@ namespace auditor
         {
             var winword = new Microsoft.Office.Interop.Word.Application();
 
-            //object missing = System.Reflection.Missing.Value;
+            object missing = System.Reflection.Missing.Value;
             //var document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
             //object start = 0;
             //object end = 0;
             //var tableLocation = document.Range(ref start, ref end);
             //document.Tables.Add(tableLocation, 3, 4);
-            object filename = @"d:temp2.docx";
-            var document = winword.Documents.Open(filename);
-            
-            
+            object template = Environment.CurrentDirectory + "/templates/ТП.docx";
+            var document = winword.Documents.Open(template);
+            var findObject = winword.Selection.Find;
+
+            object findText = "#location";
+
+            if (findObject.Execute(ref findText,
+                ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing))
+            {
+                findObject.ClearFormatting();
+                findObject.Replacement.ClearFormatting();
+                findObject.Replacement.Text = "Found";
+                object replaceAll = WdReplace.wdReplaceAll;
+                findObject.Execute(ref missing, ref missing, ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing, ref missing, ref missing,
+                    ref replaceAll, ref missing, ref missing, ref missing, ref missing);
+            }
+
+
+
             var newTable = document.Tables[1];
             newTable.Cell(1, 2).Range.Text = "sadfdsf";
-            document.SaveAs(ref filename);
-            winword.Documents.Open(@"d:temp2.docx");
+
+            var fileName = Environment.CurrentDirectory + "/generateddocs/ТП.docx";
+            document.SaveAs(fileName);
+            winword.Documents.Open(fileName);
 
             /*
             var mo = new SystemParametres<Win32_DiskDrive>().GetInfo();
@@ -76,6 +97,5 @@ namespace auditor
 
         
 
-        
     }
 }
