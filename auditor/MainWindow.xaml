@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:auditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1000">
+        Title="MainWindow" Height="650" Width="1000">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Padding" Value="0" />
@@ -17,7 +17,7 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Территориальный орган:</TextBlock>
-                <ComboBox x:Name="Departments" Height="25" Width="370">
+                <ComboBox x:Name="Departments" SelectedIndex="0" Height="25" Width="370">
                     <ComboBoxItem>УМВД России по Еврейской автономной области</ComboBoxItem>
                     <ComboBoxItem>МОМВД России "Биробиджанский"</ComboBoxItem>
                     <ComboBoxItem>МОМВД России "Ленинский"</ComboBoxItem>
@@ -25,22 +25,24 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Административное здание:</TextBlock>
-                <ComboBox x:Name="Buildings" Height="25" Width="270">
+                <ComboBox x:Name="Buildings" SelectedIndex="0" Height="25" Width="270">
                     <ComboBoxItem>г. Биробиджан, ул. Ленина, 4</ComboBoxItem>
                     <ComboBoxItem>г. Биробиджан, ул. Пионерская, 61</ComboBoxItem>
                     <ComboBoxItem>г. Биробиджан, пер. МТС, 20а</ComboBoxItem>
                 </ComboBox>
             
             <TextBlock>Подразделение:</TextBlock>
-            <ComboBox x:Name="Divisions" Height="25" Width="170">
+                <ComboBox x:Name="Divisions" SelectedIndex="0" Height="25" Width="170">
                     <ComboBoxItem>ОДиР</ComboBoxItem>
                     <ComboBoxItem>ЦИТСиЗИ</ComboBoxItem>
                     <ComboBoxItem>ОЭБиПК</ComboBoxItem>
-            </ComboBox>
+                </ComboBox>
+                <TextBlock>Кабинет, №: </TextBlock>
+                <TextBox Name="cabinet" Height="25" Width="50" VerticalContentAlignment="Center"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Тип используемой техники:</TextBlock>
-                <ComboBox x:Name="TechTypes" Height="25" Width="200">
+                <ComboBox x:Name="TechTypes" SelectedIndex="0" Height="25" Width="200">
                     <ComboBoxItem>ПЭВМ (системный блок, монитор, клавиатура, мышь)</ComboBoxItem>
                     <ComboBoxItem>Принтер</ComboBoxItem>
                     <ComboBoxItem>МФУ</ComboBoxItem>
@@ -51,7 +53,15 @@
                 <TextBlock>Заводской номер:</TextBlock>
                 <TextBox Name="serialNumber" Height="25" Width="150"></TextBox>
             </StackPanel>
-            <Button Height ="25" Width="300" Margin="10" HorizontalAlignment="Left" Click="OnClick">Распечатать тех.паспорт</Button>
+            <Button Height ="25" Width="300" Margin="10" HorizontalAlignment="Left" Click="InsertRow">Добавить запись</Button>
+            <DataGrid Name="Tech" AutoGenerateColumns="False" Height ="300" Width="500" IsReadOnly="False" HorizontalAlignment="Left" Margin="10, 10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№ п/п" Width="50"></DataGridTextColumn>
+                    <DataGridComboBoxColumn Header="Тип ОТСС" Width="200" ItemsSource="{Binding ElementName=TechTypes, Path=Items}"></DataGridComboBoxColumn>
+                    <DataGridTextColumn Header="Заводской (инвентарный) номер" Width="250"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Height ="25" Width="300" Margin="10" HorizontalAlignment="Left" Click="PrintDoc">Распечатать тех.паспорт</Button>
         </StackPanel>
         
     </Grid>

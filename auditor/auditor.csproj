@@ -79,6 +79,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Arms.cs" />
+    <Compile Include="Classes\Building.cs" />
+    <Compile Include="Classes\Certificate.cs" />
+    <Compile Include="Classes\Department.cs" />
+    <Compile Include="Classes\Device.cs" />
+    <Compile Include="Classes\Dir.cs" />
+    <Compile Include="Classes\Division.cs" />
+    <Compile Include="Classes\Institute.cs" />
+    <Compile Include="Classes\Programm.cs" />
+    <Compile Include="Classes\ProgrammType.cs" />
+    <Compile Include="Classes\Szi.cs" />
+    <Compile Include="Classes\SziType.cs" />
+    <Compile Include="Classes\TechType.cs" />
     <Compile Include="SystemParametres.cs" />
     <Compile Include="Win32_Base.cs" />
     <Compile Include="Win32_DiskDrive.cs" />

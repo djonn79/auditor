@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Word;
-
+using auditor.Classes;
 
 namespace auditor
 {
@@ -30,7 +30,7 @@ namespace auditor
 
         }
 
-        private void OnClick(object sender, RoutedEventArgs e)
+        private void PrintDoc(object sender, RoutedEventArgs e)
         {
             var winword = new Microsoft.Office.Interop.Word.Application();
 
@@ -53,7 +53,7 @@ namespace auditor
             {
                 findObject.ClearFormatting();
                 findObject.Replacement.ClearFormatting();
-                findObject.Replacement.Text = "Found";
+                findObject.Replacement.Text = "административное здание, расположенное по адресу: " + ((ComboBoxItem)Buildings.SelectedItem).Content.ToString() + ", кабинет № " + cabinet.Text + ".";
                 object replaceAll = WdReplace.wdReplaceAll;
                 findObject.Execute(ref missing, ref missing, ref missing, ref missing, ref missing,
                     ref missing, ref missing, ref missing, ref missing, ref missing,
@@ -95,7 +95,10 @@ namespace auditor
             }*/
         }
 
-        
+        private void InsertRow(object sender, RoutedEventArgs e)
+        {
+            Tech.Items.Add().InsertRow();
 
+        }
     }
 }
