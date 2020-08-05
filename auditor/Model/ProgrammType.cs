@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace auditor.Classes
+namespace auditor.Model
 {
-    class Division : Dir
+    class ProgrammType : Dir
     {
     }
 }

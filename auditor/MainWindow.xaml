@@ -17,50 +17,26 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Территориальный орган:</TextBlock>
-                <ComboBox x:Name="Departments" SelectedIndex="0" Height="25" Width="370">
-                    <ComboBoxItem>УМВД России по Еврейской автономной области</ComboBoxItem>
-                    <ComboBoxItem>МОМВД России "Биробиджанский"</ComboBoxItem>
-                    <ComboBoxItem>МОМВД России "Ленинский"</ComboBoxItem>
-                </ComboBox>
+                <ComboBox x:Name="Departments" SelectedIndex="0" Height="25" Width="370"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Административное здание:</TextBlock>
-                <ComboBox x:Name="Buildings" SelectedIndex="0" Height="25" Width="270">
-                    <ComboBoxItem>г. Биробиджан, ул. Ленина, 4</ComboBoxItem>
-                    <ComboBoxItem>г. Биробиджан, ул. Пионерская, 61</ComboBoxItem>
-                    <ComboBoxItem>г. Биробиджан, пер. МТС, 20а</ComboBoxItem>
-                </ComboBox>
-            
-            <TextBlock>Подразделение:</TextBlock>
-                <ComboBox x:Name="Divisions" SelectedIndex="0" Height="25" Width="170">
-                    <ComboBoxItem>ОДиР</ComboBoxItem>
-                    <ComboBoxItem>ЦИТСиЗИ</ComboBoxItem>
-                    <ComboBoxItem>ОЭБиПК</ComboBoxItem>
-                </ComboBox>
+                <ComboBox x:Name="Buildings" SelectedIndex="0" Height="25" Width="270"></ComboBox>
+                <TextBlock>Подразделение:</TextBlock>
+                <ComboBox x:Name="Divisions" SelectedIndex="0" Height="25" Width="170"></ComboBox>
                 <TextBlock>Кабинет, №: </TextBlock>
                 <TextBox Name="cabinet" Height="25" Width="50" VerticalContentAlignment="Center"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Тип используемой техники:</TextBlock>
-                <ComboBox x:Name="TechTypes" SelectedIndex="0" Height="25" Width="200">
-                    <ComboBoxItem>ПЭВМ (системный блок, монитор, клавиатура, мышь)</ComboBoxItem>
-                    <ComboBoxItem>Принтер</ComboBoxItem>
-                    <ComboBoxItem>МФУ</ComboBoxItem>
-                    <ComboBoxItem>Сканер</ComboBoxItem>
-                </ComboBox>
+                <ComboBox x:Name="TechTypes" SelectedIndex="0" Height="25" Width="200"></ComboBox>
                 <TextBlock>Инвентарный номер:</TextBlock>
                 <TextBox Name="inventoryNumber" Height="25" Width="150" VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Заводской номер:</TextBlock>
                 <TextBox Name="serialNumber" Height="25" Width="150"></TextBox>
             </StackPanel>
             <Button Height ="25" Width="300" Margin="10" HorizontalAlignment="Left" Click="InsertRow">Добавить запись</Button>
-            <DataGrid Name="Tech" AutoGenerateColumns="False" Height ="300" Width="500" IsReadOnly="False" HorizontalAlignment="Left" Margin="10, 10">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="№ п/п" Width="50"></DataGridTextColumn>
-                    <DataGridComboBoxColumn Header="Тип ОТСС" Width="200" ItemsSource="{Binding ElementName=TechTypes, Path=Items}"></DataGridComboBoxColumn>
-                    <DataGridTextColumn Header="Заводской (инвентарный) номер" Width="250"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+            <DataGrid Name="Devices" AutoGenerateColumns="True" ColumnWidth="*" AutoGeneratingColumn="OnAutoGeneratingColumn" CanUserAddRows="False" Height ="300" Width="510" HorizontalAlignment="Left" Margin="10, 10"></DataGrid>
             <Button Height ="25" Width="300" Margin="10" HorizontalAlignment="Left" Click="PrintDoc">Распечатать тех.паспорт</Button>
         </StackPanel>
         

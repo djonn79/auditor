@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace auditor.Classes
+namespace auditor.Model
 {
-    public class TechType : Dir
+    class Building : Dir
     {
-
     }
 }

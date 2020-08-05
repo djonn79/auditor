@@ -15,7 +15,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Word;
-using auditor.Classes;
+using auditor.Model;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace auditor
 {
@@ -24,9 +27,23 @@ namespace auditor
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+        private List<Device> devicesList;
+
         public MainWindow()
         {
             InitializeComponent();
+            if (devicesList == null)
+                devicesList = new List<Device>();
+            Devices.ItemsSource = devicesList;
+            using (var context = new AuditorContext())
+            {
+                var techType = new TechType
+                {
+                    Name = "ПЭВМ (системный блок, монитор, клавиатура, мышь)"
+                };
+                context.TechTypes.Add(techType);
+                context.SaveChanges();
+            }
 
         }
 
@@ -35,15 +52,9 @@ namespace auditor
             var winword = new Microsoft.Office.Interop.Word.Application();
 
             object missing = System.Reflection.Missing.Value;
-            //var document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
-            //object start = 0;
-            //object end = 0;
-            //var tableLocation = document.Range(ref start, ref end);
-            //document.Tables.Add(tableLocation, 3, 4);
             object template = Environment.CurrentDirectory + "/templates/ТП.docx";
             var document = winword.Documents.Open(template);
             var findObject = winword.Selection.Find;
-
             object findText = "#location";
 
             if (findObject.Execute(ref findText,
@@ -62,8 +73,7 @@ namespace auditor
 
 
 
-            var newTable = document.Tables[1];
-            newTable.Cell(1, 2).Range.Text = "sadfdsf";
+
 
             var fileName = Environment.CurrentDirectory + "/generateddocs/ТП.docx";
             document.SaveAs(fileName);
@@ -97,8 +107,30 @@ namespace auditor
 
         private void InsertRow(object sender, RoutedEventArgs e)
         {
-            Tech.Items.Add().InsertRow();
 
+        }
+
+        /// <summary>
+        /// Метод, скрывающий ненужные колонки  DataGrid'a
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            PropertyDescriptor propertyDescriptor = (PropertyDescriptor)e.PropertyDescriptor;
+            e.Column.Header = propertyDescriptor.DisplayName;
+            List<String> hiddenColumns = new List<string>
+            {
+                "IsRemoved",
+                "DepartmentId",
+                "DivisionId",
+                "BuildingId",
+                "Cabinet"
+            };
+            if (hiddenColumns.Contains(propertyDescriptor.DisplayName))
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
